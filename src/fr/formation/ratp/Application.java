@@ -1,22 +1,27 @@
 package fr.formation.ratp;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
+	@SuppressWarnings("unlikely-arg-type")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		Line line = buildLine("14");
 		System.out.println(line);
-		String[] names = { "Saint-Lazare", "Madelaine", "Pyramides","Chatelet","Gare de Lyon","Bercy" };
+		String[] names = { "Saint-Lazare", "Madelaine", "Pyramides","Chatelet","Gare de Lyon","Bercy", "Cour Saint-Émilion", "BFM", "Olympiades" };
 		List<Station> stations = buildStation(line, names);
 		System.out.println("Stations : " + stations);
 		int duration = 5;
 		List<Journey> journeys = buildJourneys(duration , stations);
-		System.out.println("Journeys : " + journeys);
-		
+
+		System.out.println("obtenir tous les éléments de ArrayList");
+	     for(int i = 0; i<journeys.size();i++)
+	        System.out.println("index : "+ i + " " + journeys.get(i));
+	  
 
 	}
 

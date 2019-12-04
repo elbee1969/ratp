@@ -1,2 +1,0 @@
-module ratp.formation.com {
-}
