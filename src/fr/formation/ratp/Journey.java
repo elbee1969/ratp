@@ -49,6 +49,10 @@ public class Journey {
 	public String toString() {
 		return "Journey [duration=" + duration + ", departure=" + departure + ", arrival=" + arrival + "]";
 	}
+	public String size() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

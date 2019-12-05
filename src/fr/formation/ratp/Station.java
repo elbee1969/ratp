@@ -33,7 +33,8 @@ public class Station {
 
 	@Override
 	public String toString() {
-		return "name : " + this.getName() + ", line : " + this.getLine();
+		return this.getName();
+		//+ ", line : " + this.getLine();
 	};
 
 }
