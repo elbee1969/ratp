@@ -55,18 +55,19 @@ public class Application {
 	public static void buildTravelTime(int dpt, int arv) {
 		int duration = 5;
 		Line line = buildLine("14");
+		System.out.println("Numéro de ligne : "+line.getName());
 		String[] names = { "Saint-Lazare", "Madelaine", "Pyramides", "Chatelet", "Gare de Lyon", "Bercy",
 				"Cour Saint-Émilion", "BFM", "Olympiades" };
 		List<Station> stations = buildStation(line, names);
 		List<Journey> journeys = buildJourneys(duration, stations);
-
-		System.out.println("obtenir tous les éléments de ArrayList");
-		for (int i = 0; i < journeys.size(); i++) {
-
-			System.out.println("index : " + i + " " + journeys.get(i));
-		}
-
-		System.out.println("taille de journeys : " + journeys.size());
+//
+//		System.out.println("obtenir tous les éléments de ArrayList");
+//		for (int i = 0; i < journeys.size(); i++) {
+//
+//			System.out.println("index : " + i + " " + journeys.get(i));
+//		}
+//
+//		System.out.println("taille de journeys : " + journeys.size());
 
 		// System.out.println("B - SE : " + journeys.get(5).getDeparture());
 		Station depart = journeys.get(dpt).getDeparture();
