@@ -16,7 +16,19 @@ public class Application {
 
 		// entrée de la station de départ et d'arrivée
 		int dpt = 0;
-		int arv = 5;
+		int arv = 0;
+
+		computeTravelTime(journeys, dpt, arv);
+
+		// entrée de la station de départ et d'arrivée
+		dpt = 1;
+		arv = 3;
+
+		computeTravelTime(journeys, dpt, arv);
+
+		// entrée de la station de départ et d'arrivée
+		dpt = 7;
+		arv = 2;
 
 		computeTravelTime(journeys, dpt, arv);
 	}
@@ -31,20 +43,11 @@ public class Application {
 
 	private static List<Station> buildStation(Line line, String[] names) {
 
-		// but : retourner des stations
-
-		// declarer une liste
 		List<Station> stations = new ArrayList<>();
-		// iterer sur les names
-		// recuperer un name
 		for (String name : names) {
-			// construire une station avec son name et sa line
 			Station station = new Station(name, line);
-			// ajoute dans la liste
 			stations.add(station);
 		}
-
-		// return list
 		System.out.println("Stations de la ligne : " + stations);
 		return stations;
 
@@ -63,7 +66,6 @@ public class Application {
 
 	private static void computeTravelTime(List<Journey> journeys, int dpt, int arv) {
 
-
 		Station depart = journeys.get(dpt).getDeparture();
 		Station arrivee = journeys.get(arv).getArrival();
 		int i = 0;
@@ -76,7 +78,6 @@ public class Application {
 		} else if (dpt < arv) {
 			way = true;
 		}
-
 		if (!way) {
 			System.out.println("Vous êtes sur place !!");
 		} else if (way) {
@@ -110,12 +111,12 @@ public class Application {
 
 		}
 
-
 		for (int j = 0; j < Math.abs((b - a)); j++) {
 
 			last += journeys.get(j).getDuration();
 		}
-		System.out.println("Temps de trajet : " +  last + " minutes");
+		System.out.println("Vous allez parcourir " + Math.abs(b - a) + " station(s)");
+		System.out.println("Temps de trajet : " + last + " minutes");
 
 	}
 
