@@ -111,12 +111,15 @@ public class Application {
 
 		}
 
-		for (int j = 0; j < Math.abs((b - a)); j++) {
+		for (int j = 0; j < Math.abs((b - a)+1); j++) {
 
 			last += journeys.get(j).getDuration();
 		}
-		System.out.println("Vous allez parcourir " + (Math.abs(b - a)+1) + " station(s)");
-		System.out.println("Temps de trajet : " + last + " minutes");
+if (way) {
+	System.out.println("Temps de trajet : " + last + " minutes pour " + Math.abs(arv-dpt + 1) + " station(s)" );
+	
+}
+		System.out.println(" ");
 
 	}
 
