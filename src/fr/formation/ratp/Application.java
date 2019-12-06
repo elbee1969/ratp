@@ -16,7 +16,7 @@ public class Application {
 
 		// entrée de la station de départ et d'arrivée
 		int dpt = 0;
-		int arv = 7;
+		int arv = 5;
 
 		computeTravelTime(journeys, dpt, arv);
 	}
@@ -45,7 +45,7 @@ public class Application {
 		}
 
 		// return list
-		System.out.println("Station de la ligne : " + stations);
+		System.out.println("Stations de la ligne : " + stations);
 		return stations;
 
 	}
@@ -63,35 +63,33 @@ public class Application {
 
 	private static void computeTravelTime(List<Journey> journeys, int dpt, int arv) {
 
-//		System.out.println("obtenir tous les éléments de ArrayList");
-//		for (int i = 0; i < journeys.size(); i++) {
-//
-//			System.out.println("index : " + i + " " + journeys.get(i));
-//		}
-//
-//		System.out.println("taille de journeys : " + journeys.size());
-// 		System.out.println("B - SE : " + journeys.get(5).getDeparture());
 
 		Station depart = journeys.get(dpt).getDeparture();
 		Station arrivee = journeys.get(arv).getArrival();
-		int tps = journeys.get(arv).getDuration();
-
 		int i = 0;
 		int a = 0;
 		int b = 0;
+		boolean way = true;
+		int last = 0;
 		if (dpt == arv) {
-			System.out.println("Vous êtes sur place !!");
+			way = false;
 		} else if (dpt < arv) {
+			way = true;
+		}
+
+		if (!way) {
+			System.out.println("Vous êtes sur place !!");
+		} else if (way) {
 			for (Journey journey : journeys) {
 
 				if (journey.getDeparture().equals(depart)) {
 
-					System.out.println("Départ : " + journey.getDeparture() + " index " + i);
+					System.out.println("Départ : " + journey.getDeparture());
 					a = i;
 				}
 				if (journey.getArrival().equals(arrivee)) {
 
-					System.out.println("arrivée : " + journey.getArrival() + " index " + i);
+					System.out.println("arrivée : " + journey.getArrival());
 					b = i;
 				}
 				i++;
@@ -99,20 +97,26 @@ public class Application {
 		} else {
 			for (Journey journey : journeys) {
 
-				if (journey.getDeparture().equals(depart)) {
+				if (journey.getArrival().equals(arrivee)) {
 
-					System.out.println("Départ : " + journey.getArrival() + " index " + i);
-					b = i;
-				} else if (journey.getArrival().equals(arrivee)) {
-
-					System.out.println("Arrivée : " + journey.getDeparture() + " index " + i);
+					System.out.println("Arrivée : " + journey.getDeparture());
 					a = i;
+				} else if (journey.getDeparture().equals(depart)) {
+					System.out.println("Départ : " + journey.getArrival());
+					b = i;
 				}
 				i++;
 			}
 
 		}
-		System.out.println("Temps de trajet : " + Math.abs((b - a) * tps) + " minutes");
+
+
+		for (int j = 0; j < Math.abs((b - a)); j++) {
+
+			last += journeys.get(j).getDuration();
+		}
+		System.out.println("Temps de trajet : " +  last + " minutes");
+
 	}
 
 }
