@@ -6,11 +6,19 @@ import java.util.List;
 public class Application {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Line line = buildLine("14");
+		System.out.println("Numéro de ligne : " + line.getName());
+		String[] names = { "Saint-Lazare", "Madelaine", "Pyramides", "Chatelet", "Gare de Lyon", "Bercy",
+				"Cour Saint-Émilion", "BFM", "Olympiades" };
+		List<Station> stations = buildStation(line, names);
+		int duration = 5;
+		List<Journey> journeys = buildJourneys(duration, stations);
+
+		// entrée de la station de départ et d'arrivée
 		int dpt = 0;
 		int arv = 7;
 
-		buildTravelTime(dpt, arv);
+		computeTravelTime(journeys, dpt, arv);
 	}
 
 	private static Line buildLine(String name) {
@@ -20,6 +28,7 @@ public class Application {
 
 	// var args String... permet d'entrer directement la liste dans buildStation
 	// private static List<Station> buildStation(Line line, String... names)
+
 	private static List<Station> buildStation(Line line, String[] names) {
 
 		// but : retourner des stations
@@ -36,7 +45,7 @@ public class Application {
 		}
 
 		// return list
-
+		System.out.println("Station de la ligne : " + stations);
 		return stations;
 
 	}
@@ -52,15 +61,8 @@ public class Application {
 		return journeys;
 	}
 
-	public static void buildTravelTime(int dpt, int arv) {
-		int duration = 5;
-		Line line = buildLine("14");
-		System.out.println("Numéro de ligne : "+line.getName());
-		String[] names = { "Saint-Lazare", "Madelaine", "Pyramides", "Chatelet", "Gare de Lyon", "Bercy",
-				"Cour Saint-Émilion", "BFM", "Olympiades" };
-		List<Station> stations = buildStation(line, names);
-		List<Journey> journeys = buildJourneys(duration, stations);
-//
+	private static void computeTravelTime(List<Journey> journeys, int dpt, int arv) {
+
 //		System.out.println("obtenir tous les éléments de ArrayList");
 //		for (int i = 0; i < journeys.size(); i++) {
 //
@@ -68,10 +70,12 @@ public class Application {
 //		}
 //
 //		System.out.println("taille de journeys : " + journeys.size());
+// 		System.out.println("B - SE : " + journeys.get(5).getDeparture());
 
-		// System.out.println("B - SE : " + journeys.get(5).getDeparture());
 		Station depart = journeys.get(dpt).getDeparture();
 		Station arrivee = journeys.get(arv).getArrival();
+		int tps = journeys.get(arv).getDuration();
+
 		int i = 0;
 		int a = 0;
 		int b = 0;
@@ -108,7 +112,7 @@ public class Application {
 			}
 
 		}
-		System.out.println("Temps de trajet : " + Math.abs((b - a) * 5) + " minutes");
+		System.out.println("Temps de trajet : " + Math.abs((b - a) * tps) + " minutes");
 	}
 
 }
