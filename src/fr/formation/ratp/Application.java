@@ -115,7 +115,7 @@ public class Application {
 
 			last += journeys.get(j).getDuration();
 		}
-		System.out.println("Vous allez parcourir " + Math.abs(b - a) + " station(s)");
+		System.out.println("Vous allez parcourir " + (Math.abs(b - a)+1) + " station(s)");
 		System.out.println("Temps de trajet : " + last + " minutes");
 
 	}
