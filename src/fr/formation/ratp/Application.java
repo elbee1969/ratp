@@ -49,6 +49,7 @@ public class Application {
 			stations.add(station);
 		}
 		System.out.println("Stations de la ligne : " + stations);
+		System.out.println("");
 		return stations;
 
 	}
